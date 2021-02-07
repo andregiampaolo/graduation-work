@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# encoding=utf8
+# encoding=utf-8
 
 import functools
 import json
@@ -83,8 +83,7 @@ def get_terms_link_topic(topic_id, order='DESC',quantity=8):
 
     terms = []
     for term in topic_terms:
-        terms.append(term['term'])
-    
+        terms.append(term['term'].encode('ascii', 'ignore'))
     string_terms = ','.join(str(e) for e in terms)
 
     return string_terms
