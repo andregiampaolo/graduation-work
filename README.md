@@ -1,4 +1,4 @@
-c# Graduation Work
+# Graduation Work
 Modeling topics as a proposal for classifying the organizational recruitment curriculum database.pdf
 (A modelagem de tópicos como proposta para classificação de banco de currículos de recrutamento organizacional)
 
