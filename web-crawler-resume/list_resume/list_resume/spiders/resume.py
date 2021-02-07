@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import scrapy
 import logging
 
@@ -8,7 +9,9 @@ class ResumeSpider(scrapy.Spider):
     resumes = []
 
     def start_requests(self):
-        with open("./links/resume-links.txt","r") as file:
+        path = os.path.dirname(os.path.abspath(__file__))
+        print('\n\n\n\n AQUIIII', path)
+        with open(path+"/links/resume-links.txt","r") as file:
             lines = file.readlines()
             logging.debug('Link: %s', lines)
             for line in lines:
