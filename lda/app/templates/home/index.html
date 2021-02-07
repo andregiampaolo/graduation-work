@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Seja bem vindo</h1>
+    <hr>
+    <h2>O projeto</h2>
+    <p>
+        Este projeto tem como objetivo embasar o trabalho de conclusão de curso da Universidade de Brasília.<br>
+        Possibilitando a aplicação do algoritmo de modelagem probabilista, LDA (lattent Dirichlet Allocation) de tópicos em uma base de experiências profissionais.<br>
+        Serão apresentados os vinculos entre documentos x termos x tópicos, e também será possível realizar a validação dos tópicos gerados por meio das tecnicas de <i>word-intrustion</i> e <i>topic-intrusion</i> 
+    </p>
+    <hr>
+    <h2>Como utilizar</h2>
+    <p>
+        Inicialmente é necessário executar o algoritmo LDA (menu LDA).<br/>
+        Desta forma serão gerados os tópicos e os vinculos entre documento_x_ termos, tópicos_x_termos e documento_x_tópicos.
+        <br/>
+        <br/>
+        Assim que executado o algoritmo, será possível visualizar estes vinculos e suas porcentagens nos menus superiores. 
+        <br/>
+        Também será possível validar os tópicos gerados, por meio das tecnicas de <i>word-intrusion</i> e <i>topic-intrusion</i>
+    </p>
+
+{% endblock %}

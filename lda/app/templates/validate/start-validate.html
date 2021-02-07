@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Iniciar validação</h1>
+    
+    <form name="form-start-validate" id="form-start-validate" method="post" action="/word-intrusion/test">
+        <div class="form-group">
+            <label>Qual seu nome?:*</label>
+            <input type="text" name="user_name" id="user_name" />
+        </div>
+        <input type="submit" value="Comecar a validar os tópicos" class="btn btn-success"/>
+        
+    </form>
+{% endblock %}

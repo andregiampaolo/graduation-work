@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Resultado:</h1>
+    <div>
+        <h3>Porcentagem de acerto: {{percent_hit_answer}}</h3>
+    </div>
+    <form method="post" action="/topic-intrusion/test">
+        <input type="hidden" name="validate_id" value="{{validate_id}}" />
+        <input type="submit" value="Finalizar validação" class="btn btn-success" />
+    </form>
+
+    <hr>
+    
+    <table class="table table-active">
+        <thead>
+            <tr>
+                <th>Tópico</th>
+                <th>Acertou?</th>
+                <th>Lista de palavras</th>
+                <th>Palavra intrusa</th>
+                <th>Resposta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for topic in word_intrusion %}
+            {% if topic['hit_answer']: %}
+                <tr class="table-success">
+            {% else: %}
+                <tr class="table-danger">
+            {% endif %}
+                    <td>{{topic['topic_name']}}</td>
+                    <td>
+                        {% if topic['hit_answer']: %}
+                            Acertou
+                        {% else: %}
+                            Errou
+                        {% endif %}
+                    </td>
+                    <td>
+                            {{topic['word_one']}} -
+                            {{topic['word_two']}} - 
+                            {{topic['word_three']}} - 
+                            {{topic['word_four']}} - 
+                            {{topic['word_five']}}
+                    </td>
+                    <td>
+                        {{topic['word_intrusion']}}
+                    </td>
+                    <td>
+                        {{response[topic['topic_name']]}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}
+

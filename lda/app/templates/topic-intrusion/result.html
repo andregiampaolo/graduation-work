@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Resultado:</h1>
+    <div>
+        <h3>Porcentagem de acerto: {{percent_hit_answer}}</h3>
+    </div>
+
+    <table class="table table-active">
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Acertou?</th>
+                <th>Lista dos tópicos</th>
+                <th>Palavra intrusa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in topic_intrusion %}
+                {% if doc['hit_answer']: %}
+                    <tr class="table-success">
+                {% else: %}
+                    <tr class="table-danger">
+                {% endif %}
+                    <td>{{doc['docs_id']}}</td>
+                    <td>
+                        {% if doc['hit_answer']: %}
+                            Acertou
+                        {% else: %}
+                            Errou
+                        {% endif %}
+                    </td>
+                    <td>
+                        <p>
+                            <strong>{{doc['topic_one']}}:</strong> 
+                            {{doc['topic_one_list_word']}}
+                        </p>
+                        <p>
+                            <strong>{{doc['topic_two']}}:</strong>{{doc['topic_two_list_word']}}
+                        </p>
+                        <p>
+                            <strong>{{doc['topic_three']}}:</strong>
+                            {{doc['topic_three_list_word']}}
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <strong>{{doc['topic_intrusion']}}:</strong>
+                            {{doc['topic_intrusion_list_word']}}
+                        </p>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
+

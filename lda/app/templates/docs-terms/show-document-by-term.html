@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Termo: {{ term }}</h1>
+    {% for doc in docs %}
+        <p>
+            <strong>Código documento:</strong> {{doc['user_code']}}
+            <br/>
+            <strong>Quantidade: </strong> {{doc['quantity']}}
+            <br>
+            <strong>Experiiencia do usuário:</strong> {{doc['experience']}}
+            <br/>
+        </p>
+        <br/>
+        <br/>
+    {% endfor %}
+{% endblock %}
+

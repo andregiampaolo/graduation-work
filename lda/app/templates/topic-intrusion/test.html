@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Testando intrusao de de topico</h1>
+    <h3>Obrigado pela ajuda {{user_name}}</h3>
+    <p>
+        1. Serão apresentados trechos de documentos.<br>
+        2. Cada documento possui uma lista de palavras relacionadas. <br>
+        3. Selecione a lista de palavras que faz menos sentido para este documento.<br>
+    </p>
+    <hr>
+
+    <form method="post" action="save" name="form-topic-intrusion" id="form-topic-intrusion">
+        <input type="hidden" name="validate_id" value="{{validate_id}}" />
+        {% for doc_id  in data: %}
+
+
+            <div class="card doc-card">
+                <div class="card-header">
+                Documento  
+                </div>
+                <div class="card-body">
+                        <h5 class="card-title">Texto</h5>
+                        <p class="card-text">
+                                {{ data[doc_id]['doc']['experience'][:500] }} 
+                        </p>
+                        <hr>
+                        <p class="card-text">
+                                {% for topic_name in data[doc_id]['topics']%}
+                                <p>
+                                    <input type="radio" name="{{doc_id}}" value="{{topic_name}}">
+                                    {{data[doc_id]['topics'][topic_name]}}
+                                </p>
+                            {% endfor %}
+                        </p>
+                    </div>
+            </div>
+            <br/>
+        {% endfor %}
+        <div class="text-center">
+            <input type="submit" value="Terminar" class="btn btn-primary col-md-8"/>
+            <br><br>
+        </div>
+    </form>
+
+{% endblock %}

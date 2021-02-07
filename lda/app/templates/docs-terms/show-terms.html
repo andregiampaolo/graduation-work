@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Termos por documentos</h1>
+    <p>Total de termos: {{total_terms}}</p>
+    <hr/>
+
+    {% for key, words in vocabulary.items() %}
+        <h3>{{key}}</h3>
+        {% for id_term, term in words %}
+            <a href="{{ url_for('docsterms.show_document_by_term', id_term=id_term ) }}">
+                {{term}}
+            </a>, 
+        {% endfor %}
+        <hr>
+    {% endfor %}
+
+{% endblock %}

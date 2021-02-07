@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Documentos:</h1>
+<p>Total de documentos: {{total_docs}}</p>
+<hr>
+
+{% for user_code, experience in all_docs.items() %}
+<div class="card">
+    <div class="card-header">
+        Código: {{user_code}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Conteúdo</h5>
+        <p class="card-text">{{experience}}</p>
+        <p class="card-text">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tópico vinculados</th>
+                    <th>Porcentagem</th>
+                </tr>
+            </thead>
+            {% set counter = 0%}
+            {% for topic in docs_topics[user_code] %}
+            <tr>
+                <td>{{topic['topic'].decode('utf-8')}}</td>
+                <td>{{topic['percent']}}</td>
+            </tr>
+            {% set counter = counter + 1 %}
+            {% endfor %}
+        </table>
+        </p>
+    </div>
+</div>
+<br />
+{% endfor %}
+{% endblock %}

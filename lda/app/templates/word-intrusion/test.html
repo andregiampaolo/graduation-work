@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Testando intrusão de palavras</h1>
+    <h3>Obrigado pela ajuda {{user_name}}</h3>
+    <p>
+        1. Na tabela abaixo é apresentada uma lista de tópicos (linhas).<br>
+        2. Onde cada tópico possui 6 palavras relacionadas (colunas). <br>
+        3. Uma destas 6 palavras palavras não pertence ao tópico.<br>
+        4. Selecione a palavra que você acredita que não faz parte deste tópico.
+    </p>
+
+
+    <hr/>
+    <form name="form-word-intrusion" id="form-word-intrusion" method="post" action="save">
+        <input type="hidden" name="validate_id" value="{{validate_id}}" />
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Tópico</th>
+                    <th>Palavra 1</th>
+                    <th>Palavra 2</th>
+                    <th>Palavra 3</th>
+                    <th>Palavra 4</th>
+                    <th>Palavra 5</th>
+                    <th>Palavra 6</th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                
+                {% for id_topic, list_words in list_intrusion.items(): %}
+                    <tr class="topic-line">
+                        <th>Tópico {{id_topic}}:</th>
+                        {% for word in list_words %}
+                            <td>
+                                <input type="radio" name="topic_{{id_topic}}" value="{{word}}">
+                                <label>{{word}}</label>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <input type="submit" value="Salvar" class="btn btn-primary col-md-8" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+{% endblock %}
+
+
+<script type="text/javascript">
+    alert('a');
+</script>

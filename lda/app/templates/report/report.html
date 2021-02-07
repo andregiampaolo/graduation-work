@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if not validate_word_intrusion: %}
+        <h2 class="text-center">Nenhuma validação realizada</h2>
+    {% else: %}
+        <h3>Resultados</h3>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Word Intrusion</th>
+                    <th>Topic Intrusion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key,value in validate_word_intrusion.items(): %}
+                    <tr>
+                        <td>{{key}}</td>
+                        <td>{{value[0]}}%</td>
+                        <td>{{value[1]}}%</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
+

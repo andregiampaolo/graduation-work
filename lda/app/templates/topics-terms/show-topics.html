@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Topicos:</h1>
+    {% for topic in topics %}
+        <p>
+            
+            <strong>Nome do tópico:</strong> {{topic['topic']}}: 
+            <br/>
+            <strong>Termos vinculados:</strong> {{topic['termos']}}
+        </p>
+        <br/>
+            {% for doc in docs_topics[topic['topic_id']] %}
+                <p> 
+                    <a href="http://www.bne.com.br/visualizacao-do-curriculo-de-enfermeiro-em-brasilia-df/{{doc['user_code']}}" target="_blank">
+                        {{doc['user_code']}}
+                    </a> - ({{doc['percent']}})</p>
+            {% endfor %}
+        <br/>
+        <br/>
+        <br/>
+    {% endfor %}
+{% endblock %}
